@@ -9,6 +9,7 @@ import android.widget.EditText
 import android.widget.TableLayout
 import android.widget.TextView
 import android.widget.Toast
+import java.lang.Double.parseDouble
 
 class MainActivity : AppCompatActivity() {
 
@@ -61,11 +62,11 @@ class MainActivity : AppCompatActivity() {
 
     fun getGpa() : Double {
         var result = 0.0
-        result += Integer.parseInt(grade1.text.toString().trim())
-        result += Integer.parseInt(grade2.text.toString().trim())
-        result += Integer.parseInt(grade3.text.toString().trim())
-        result += Integer.parseInt(grade4.text.toString().trim())
-        result += Integer.parseInt(grade5.text.toString().trim())
+        result += parseDouble(grade1.text.toString().trim())
+        result += parseDouble(grade2.text.toString().trim())
+        result += parseDouble(grade3.text.toString().trim())
+        result += parseDouble(grade4.text.toString().trim())
+        result += parseDouble(grade5.text.toString().trim())
         result /= 5.0
         return result
     }

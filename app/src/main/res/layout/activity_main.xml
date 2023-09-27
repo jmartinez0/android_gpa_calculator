@@ -18,7 +18,9 @@
             android:layout_column="1" />
     </TableRow>
 
-    <TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <TextView
             android:text="Grade 1"
@@ -33,7 +35,9 @@
             android:layout_height="wrap_content" />
     </TableRow>
 
-    <TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <TextView
             android:text="Grade 2"
@@ -48,7 +52,9 @@
             android:layout_height="wrap_content" />
     </TableRow>
 
-    <TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <TextView
             android:text="Grade 3"
@@ -63,7 +69,9 @@
             android:layout_height="wrap_content" />
     </TableRow>
 
-    <TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <TextView
             android:text="Grade 4"
@@ -78,7 +86,9 @@
             android:layout_height="wrap_content" />
     </TableRow>
 
-    <TableRow>
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
         <TextView
             android:text="Grade 5"
