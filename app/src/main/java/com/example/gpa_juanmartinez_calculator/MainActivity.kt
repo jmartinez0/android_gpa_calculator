@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var grade5 : EditText
     lateinit var computedGpa : TextView
     lateinit var computeGpaButton : Button
-
+    var gpaCalculated = false;
+    var fieldsClear = true;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,8 +29,30 @@ class MainActivity : AppCompatActivity() {
         computedGpa = findViewById(R.id.gpa)
         computeGpaButton = findViewById(R.id.button)
         computeGpaButton.setOnClickListener(View.OnClickListener() {
-            computedGpa.setText("test")
+            computeGpa()
         })
+    }
+
+    fun computeGpa() {
+        /*
+        if (!gpaCalculated) {
+            if (!fieldsClear) {
+
+            }
+        }*/
+        var tt = getGpa()
+        computedGpa.text = tt.toString()
+    }
+
+    fun getGpa() : Double {
+        var result = 0.0
+        result += Integer.parseInt(grade1.text.toString().trim())
+        result += Integer.parseInt(grade2.text.toString().trim())
+        result += Integer.parseInt(grade3.text.toString().trim())
+        result += Integer.parseInt(grade4.text.toString().trim())
+        result += Integer.parseInt(grade5.text.toString().trim())
+        result /= 5.0
+        return result
     }
 
 
