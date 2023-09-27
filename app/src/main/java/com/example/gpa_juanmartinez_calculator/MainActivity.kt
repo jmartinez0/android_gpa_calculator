@@ -1,11 +1,14 @@
 package com.example.gpa_juanmartinez_calculator
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TableLayout
 import android.widget.TextView
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,8 +19,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var grade5 : EditText
     lateinit var computedGpa : TextView
     lateinit var computeGpaButton : Button
+    lateinit var background : View
     var gpaCalculated = false;
-    var fieldsClear = true;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,20 +32,31 @@ class MainActivity : AppCompatActivity() {
         grade5 = findViewById(R.id.grade_five)
         computedGpa = findViewById(R.id.gpa)
         computeGpaButton = findViewById(R.id.button)
+        background = findViewById(R.id.background)
         computeGpaButton.setOnClickListener(View.OnClickListener() {
             computeGpa()
         })
     }
 
     fun computeGpa() {
-        /*
         if (!gpaCalculated) {
-            if (!fieldsClear) {
-
+            if (!fieldsEmpty()) {
+                var gpa = getGpa()
+                computedGpa.text = gpa.toString()
+                setBackgroundColor(gpa)
+                computeGpaButton.text = "Clear form"
+                gpaCalculated = true;
+            } else {
+                Toast.makeText(applicationContext, "All fields must be filled", Toast.LENGTH_SHORT).show()
             }
-        }*/
-        var tt = getGpa()
-        computedGpa.text = tt.toString()
+        } else {
+            clearFields()
+            background.setBackgroundColor(Color.WHITE)
+            computeGpaButton.text = "Compute GPA"
+            computedGpa.text = "0.0"
+            gpaCalculated = false
+        }
+
     }
 
     fun getGpa() : Double {
@@ -55,5 +70,30 @@ class MainActivity : AppCompatActivity() {
         return result
     }
 
+    fun fieldsEmpty() : Boolean {
+        return grade1.text.toString().trim().equals("")
+                || grade2.text.toString().trim().equals("")
+                || grade3.text.toString().trim().equals("")
+                || grade4.text.toString().trim().equals("")
+                || grade5.text.toString().trim().equals("")
+    }
+
+    fun clearFields() {
+        grade1.setText("")
+        grade2.setText("")
+        grade3.setText("")
+        grade4.setText("")
+        grade5.setText("")
+    }
+
+    fun setBackgroundColor(gpa: Double) {
+        if (gpa < 60.0) {
+            background.setBackgroundColor(Color.RED)
+        } else if (gpa > 60.0 && gpa < 80.0) {
+            background.setBackgroundColor(Color.YELLOW)
+        } else {
+            background.setBackgroundColor(Color.GREEN)
+        }
+    }
 
 }
